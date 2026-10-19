@@ -1,23 +1,15 @@
-<div class="container mt-4">
-  <div class="position-relative">
-    <%= image_tag "cinema-banner.jpg", class: "img-fluid w-100" %>
-    <h1 class="position-absolute top-50 start-50 translate-middle text-white">
-      My Watch Lists
-    </h1>
-  </div>
+<div class="header-banner">
+  <h1 class="text-white">My Watch Lists</h1>
+</div>
 
-  <%= link_to "Create List", new_list_path, class: "btn btn-primary" %>
+<div class="container mt-4">
+  <%= link_to "Create List", new_list_path, class: "btn btn-primary my-4" %>
 
   <div class="row">
     <% @lists.each do |list| %>
       <div class="col-md-4 mb-3">
-        <div class="card">
-          <% if list.image_url.present? %>
-            <%= image_tag list.image_url, class: "card-img-top", style: "height: 200px; object-fit: cover;" %>
-          <% end %>
-          <div class="card-body">
-            <%= link_to list.name, list_path(list) %>
-          </div>
+        <div class="list-card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<%= list.image_url %>');">
+          <%= link_to list.name, list_path(list) %>
         </div>
       </div>
     <% end %>

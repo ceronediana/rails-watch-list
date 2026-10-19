@@ -1,0 +1,20 @@
+.list-card {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+.movie-poster {
+  height: 350px;
+  object-fit: cover;
+}
