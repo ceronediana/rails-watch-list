@@ -4,7 +4,7 @@
     <h1 class="mb-4">Create a New List</h1>
       <%= simple_form_for(@list) do |f| %>
         <%= f.input :name %>
-        <%= f.input :image_url %>
+        <%= f.input :photo, as: :file %>
         <%= f.submit "Create List", class: "btn btn-primary" %>
         <%= link_to "Cancel", lists_path, class: "btn btn-secondary" %>
       <% end %>

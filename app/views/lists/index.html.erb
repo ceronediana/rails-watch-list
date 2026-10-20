@@ -7,8 +7,13 @@
 
   <div class="row">
     <% @lists.each do |list| %>
+      <% image = if list.photo.attached?
+             url_for(list.photo)
+           else
+             list.image_url
+           end %>
       <div class="col-md-4 mb-3">
-        <div class="list-card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<%= list.image_url %>');">
+        <div class="list-card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<%= image %>');">
           <%= link_to list.name, list_path(list) %>
         </div>
       </div>

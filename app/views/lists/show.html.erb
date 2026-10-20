@@ -1,4 +1,10 @@
-<div class="header-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<%= @list.image_url %>');">
+<% image = if @list.photo.attached?
+    url_for(@list.photo)
+  else
+    @list.image_url
+  end %>
+
+<div class="header-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<%= image %>');">
   <h1 class="text-white"><%= @list.name %></h1>
 </div>
 
@@ -15,6 +21,7 @@
           <div class="card-body">
             <h3><%= bookmark.movie.title %></h3>
             <p><i class="fa-solid fa-star text-warning"></i> <%= bookmark.movie.rating %> /10</p>
+            <p><%= bookmark.movie.overview %></p>
             <p><%= bookmark.comment %></p>
 
             <%= link_to "Delete",
