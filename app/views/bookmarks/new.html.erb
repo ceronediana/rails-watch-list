@@ -1,11 +1,11 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="col-md-6 mx-auto bg-light p-4 rounded">
+    <div class="col-md-6 mx-auto bg-dark p-4 rounded border border-secondary shadow-sm" data-bs-theme="dark">
       <h1 class="mb-4">Add a Movie</h1>
       <%= simple_form_for [@list, @bookmark] do |f| %>
         <%= f.association :movie, label_method: :title %>
         <%= f.input :comment %>
-        <%= f.submit "Add Movie", class: "btn btn-primary" %>
+        <%= f.submit "Add Movie", class: "btn btn-success rounded-3 text-white my-4" %>
         <%= link_to "Cancel", list_path(@list), class: "btn btn-secondary" %>
       <% end %>
     </div>

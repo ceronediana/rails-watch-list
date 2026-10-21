@@ -1,10 +1,15 @@
 .list-card {
   height: 200px;
   background-size: cover;
+  transition: transform 0.2s ease;
   background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+  transform: translateY(-5px);
+  }
 
   a {
     color: white;
