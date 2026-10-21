@@ -1,28 +1,29 @@
-<% image = if @list.photo.attached?
-             if @list.photo.blob.service_name == "cloudinary"
-               cl_image_path(@list.photo.key, width: 1200, height: 500, crop: :fill)
-             else
-               url_for(@list.photo)
-             end
-           else
-             @list.image_url
-           end %>
+<% image =
+  if @list.photo.attached?
+    if @list.photo.blob.service_name == "cloudinary"
+      cl_image_path(@list.photo.key, width: 1200, height: 500, crop: :fill)
+    else
+      url_for(@list.photo)
+    end
+  else
+    @list.image_url
+  end %>
 
 <div class="header-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<%= image %>');">
   <h1 class="text-white"><%= @list.name %></h1>
 </div>
 
 <div class="container mt-4">
-  <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-primary" %>
+  <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-success rounded-3 text-white" %>
 </div>
 
 <div class="container mt-4">
   <div class="row">
     <% @list.bookmarks.each do |bookmark| %>
       <div class="col-md-4 mb-3">
-        <div class="card">
+        <div class="card h-100 rounded-3 shadow-sm">
           <%= image_tag bookmark.movie.poster_url, class: "card-img-top movie-poster" %>
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
             <h3><%= bookmark.movie.title %></h3>
             <p><i class="fa-solid fa-star text-warning"></i> <%= bookmark.movie.rating %> /10</p>
             <p><%= bookmark.movie.overview %></p>
@@ -30,6 +31,7 @@
 
             <%= link_to "Delete",
                 bookmark_path(bookmark),
+                class: "mt-auto btn btn-outline-danger btn-sm",
                 data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
@@ -42,5 +44,5 @@
 </div>
 
 <div class="container mb-4">
-  <%= link_to "Back to All Lists", lists_path, class: "btn btn-secondary" %>
+  <%= link_to "Back to All Lists", lists_path, class: "btn btn-secondary rounded-3" %>
 </div>
