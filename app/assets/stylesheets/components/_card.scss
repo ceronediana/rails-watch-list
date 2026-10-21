@@ -20,6 +20,31 @@
 }
 
 .movie-poster {
-  height: 350px;
-  object-fit: cover;
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.star-rating {
+  .stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+
+    input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+    }
+
+    label {
+      font-size: 30px;
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    input[type="radio"]:checked + label,
+    input[type="radio"]:checked ~ input[type="radio"] + label {
+      color: #ffc107;
+    }
+  }
 }
