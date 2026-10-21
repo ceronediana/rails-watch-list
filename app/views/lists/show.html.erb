@@ -1,8 +1,12 @@
 <% image = if @list.photo.attached?
-    url_for(@list.photo)
-  else
-    @list.image_url
-  end %>
+             if @list.photo.blob.service_name == "cloudinary"
+               cl_image_path(@list.photo.key, width: 1200, height: 500, crop: :fill)
+             else
+               url_for(@list.photo)
+             end
+           else
+             @list.image_url
+           end %>
 
 <div class="header-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<%= image %>');">
   <h1 class="text-white"><%= @list.name %></h1>
